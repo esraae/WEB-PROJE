@@ -1,0 +1,87 @@
+<style>
+	.zoom {
+		transition: transform .5s;
+		border-radius: 8px;
+		margin: 0 auto;
+	}
+
+	.zoom:hover {
+		transform: scale(2.2);
+		border: 2px solid #fff;
+		border-radius: 8px;
+		box-shadow: 1px 1px 5px #ccc;
+		-moz-box-shadow: 1px 1px 5px #ccc;
+		-webkit-box-shadow: 1px 1px 5px #ccc;
+		border-radius: 8px;
+		box-shadow: 1px 1px 5px #ccc;
+		-moz-box-shadow:
+			1px 1px 5px #ccc;
+		-webkit-box-shadow: 1px 1px 5px #ccc;
+		-khtml-box-shadow: 1px 1px 5px #ccc;
+	}
+
+	.zoom:click {
+		transform: scale(5.2);
+		border: 2px solid #fff;
+		border-radius: 8px;
+		box-shadow: 1px 1px 5px #ccc;
+		-moz-box-shadow: 1px 1px 5px #ccc;
+		-webkit-box-shadow: 1px 1px 5px #ccc;
+		border-radius: 8px;
+		box-shadow: 1px 1px 5px #ccc;
+		-moz-box-shadow:
+			1px 1px 5px #ccc;
+		-webkit-box-shadow: 1px 1px 5px #ccc;
+		-khtml-box-shadow: 1px 1px 5px #ccc;
+	}
+</style>
+
+<div [ngStyle]="{'background-image': 'url(./assets/images/bg22.jpg)','background-size': '100% 100%' }"
+  style="position: fixed; width: 100%; height: 100%; left: 0"></div>
+
+<div class="container col-md-12" style="padding-top: 1%; float:right;"  *ngIf="hardcodedAuthenticationService.isAdmin()">
+  <h1 style="font-size: 30px;color: #343a40;">Siparişler</h1>
+ 
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th></th>
+        <th>Ürün Adı</th>
+        <th>Ürün Açıklaması</th>
+        <th>Adet</th>
+        <th>Ad Soyad</th>
+        <th>İletişim-Adres</th>
+        <th></th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <!-- ts tarafında ki todos listesini burada yazdırıyoruz -->
+      <tr *ngFor="let bucket of bucket1">
+
+        <td><img *ngIf="bucket.product" class="zoom" src="{{bucket.product.image}}" width="85" height="55" /></td>
+        <td>{{bucket.product.name}}</td>
+        <td>{{bucket.product.description}}</td>
+        <td><b>{{bucket.count}}</b></td>
+        <td><b>{{bucket.name}}</b></td>
+        <td>{{bucket.address}}</td>
+        <td><button class="btn btn-danger" (click)="deleteBucket(bucket.id)">Sil</button></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="6">
+          <nav aria-label="Page navigation example" style="float: right;">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" (click)="goPrevious(index)">Geri</a></li>
+              <li *ngFor="let x of bucket1 | slice:0:size; let i =index" class="page-item"><a class="page-link"
+                  (click)="pageChange(i+1)">{{i+1}}</a></li>
+              <li class="page-item"><a class="page-link" (click)="goNext(index)">İleri</a></li>
+            </ul>
+          </nav>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

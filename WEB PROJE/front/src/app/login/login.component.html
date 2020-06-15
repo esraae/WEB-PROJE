@@ -1,0 +1,41 @@
+﻿<div [ngStyle]="{'background-image': 'url(./assets/images/bg1.jpg)','background-size': '100% 100%' }"
+	style="position: fixed; width: 100%; height: 100%; left:0">
+	</div>
+
+
+<div class="container col-md-6 col-md-offset-3" style="padding-top:10%;">
+	<h1>Giriş</h1>
+	<div class="alert alert-warning" *ngIf='invalidLogin'>Lütfen
+		kullanıcı adı ve şifrenizi kontrol edin.</div>
+	<!-- ngIf='invalidLogin' ile yapılmak istenen
+    login component kısmında yapmış olduğumuz
+    kullanıcı adı ve şifre doğru gelirse invalidLogin false
+    yanlış gelirse invalidLogin true şekline göre bu small tagını durum false ise gizleyecek
+    true ise gösterecek
+-->
+
+	<div class="form-group">
+		<label for="username">Kullanıcı Adı</label> <input
+			class="form-control" type=" text" name="username"
+			[(ngModel)]="username">
+		<!-- [(ngModel)] Bu ifade type script tarafında ki username değişkiniyle eşleş demek
+Yani burada inputdan almış olduğumuz username değerini login.component.ts tarafındaki username ile eşleştiriyoruz
+
+-->
+	</div>
+	<div class="form-group">
+
+		<label for="password">Şifre</label> <input class="form-control"
+			type="password" name="password" [(ngModel)]="password">
+	</div>
+	<div class="form-group">
+
+		<!-- <button (click)=handleLogin() class="btn btn-success">Login</button> -->
+		<button (click)=handleJWTAuthLogin() class="btn btn-success">Giriş</button>
+		<!--click metodunun handleLogin olacağını belirledik
+Type Script tarafında ise bunun karşılığınde aynı isimde bir metod yazdık
+-->
+
+		<!-- User Name : {{username}} -->
+	</div>
+</div>

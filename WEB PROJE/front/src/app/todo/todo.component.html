@@ -1,0 +1,43 @@
+<div
+	[ngStyle]="{'background-image': 'url(./assets/images/bg3.jpg)','background-size': '100% 100%' }"
+	style="position: fixed; width: 100%; height: 100%; left: 0"></div>
+
+<div class="container col-md-11 col-md-offset-3"
+	style="padding-top: 10%; padding-left: 40%;">
+	<h1 style="font-size: 40px;color: #343a40;">ÜRÜN BİLGİLERİ</h1>
+	<!-- todoFormu invalid olduğunda mesaj görünecek -->
+	<!-- 	<div class="alert alert-warning" -->
+	<!-- 		*ngIf="todoForm.dirty && todoForm.invalid ">Geçerli bir değer -->
+	<!-- 		giriniz</div> -->
+
+
+	<!-- Save butonuna tıkladığımızda saveTodo formu submit edilecek -->
+	<!-- todoForm geçersiz değilse yani boş alan yoksa kayıt işlemi olacak -->
+	<form (ngSubmit)="saveTodo()" #todoForm="ngForm">
+
+		<fieldset class="form-group">
+			<label style="font-size: 20px;color: #343a40;">Ürün Adı</label> <input type="text" [(ngModel)]=todo.name
+				class="form-control" name="name" required="required" minlength="5">
+		</fieldset>
+
+
+		<fieldset class="form-group">
+			<label style="font-size: 20px;color: #343a40;">Ürün Açıklaması</label> <input type="text"
+				[(ngModel)]=todo.description class="form-control" name="description"
+				required="required" minlength="5">
+		</fieldset>
+
+		<fieldset class="form-group">
+			<label style="font-size: 20px;color: #343a40;">Ürün Fiyatı</label> <input type="text" [(ngModel)]=todo.price
+				class="form-control" name="price" required="required" minlength="5">
+		</fieldset>
+
+		<fieldset class="form-group">
+			<input style="display: none" type="file" accept="image/*"
+				(change)="onFileChanged($event)" #fileInput>
+			<button class="btn btn-success" (click)="fileInput.click()"
+				type="button" >Resim Ekle</button>
+		</fieldset>
+		<button type="submit" class="btn btn-success">Tamam</button>
+	</form>
+</div>

@@ -1,0 +1,46 @@
+<div [ngStyle]="{'background-image': 'url(./assets/images/bg6.jpg)','background-size': '100% 100%' }"
+  style="position: fixed; width: 100%; height: 100%; left: 0"></div>
+
+<div class="container col-md-9" style="padding-top: 5%; float:right;"  *ngIf="hardcodedAuthenticationService.isAdmin()">
+  <!-- message değişkeni doluysa görünecek değilse görünmeyecek -->
+  <div class="alert alert-success" *ngIf='message'>{{message}}</div>
+  <h1 style="font-size: 30px;color: #343a40;">MÜŞTERİLER</h1>
+  <div class="col-md-12" style="padding-bottom: 50px;">
+    <button style="float: right;" (click)="addTodo()" class="btn btn-success">Müşteri Ekle</button>
+  </div>
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th>Adı</th>
+        <th>Soyadı</th>
+        <th>Kullanıcı Adı</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- ts tarafında ki todos listesini burada yazdırıyoruz -->
+      <tr *ngFor="let user of user1">
+
+        <td>{{user.name}}</td>
+        <td>{{user.surname}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="6">
+          <nav aria-label="Page navigation example" style="float: right;">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" (click)="goPrevious(index)">Geri</a></li>
+              <li *ngFor="let x of user1 | slice:0:size; let i =index" class="page-item"><a class="page-link"
+                  (click)="pageChange(i+1)">{{i+1}}</a></li>
+              <li class="page-item"><a class="page-link" (click)="goNext(index)">İleri</a></li>
+            </ul>
+          </nav>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

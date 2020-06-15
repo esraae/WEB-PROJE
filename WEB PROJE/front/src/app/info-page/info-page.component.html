@@ -1,0 +1,162 @@
+<style>
+* {
+	font-family: Arial;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	background-color: #1d4657;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+header {
+	background-color: #4384b1;
+	width: 100%;
+	display: inline-block;
+}
+
+.menu {
+	float: right;
+}
+
+.menu li {
+	display: inline-block;
+}
+
+.menu li a {
+	color: white;
+	font-size: 16px;
+	font-weight: 300;
+	padding: 12px 18px;
+	display: inline-block;
+}
+
+.menu li a:hover {
+	background-color: #5fabe0;
+}
+
+.kutu {
+	width: 100%;
+	max-width: 1200px;
+	margin: auto;
+	color: #f7f5ed;
+}
+
+.logo {
+	font-size: 24px;
+	font-weight: 600;
+	color: white;
+	padding: 7px 20px;
+	display: inline-block;
+}
+
+.logo:hover {
+	background-color: #5fabe0;
+}
+
+main {
+	padding: 30px 15px;
+	min-height: 770px;
+	background-color: white;
+}
+
+h1 {
+	text-align: center;
+	font-size: 36px;
+	margin-top: 15px;
+	margin-bottom: 30px;
+}
+
+h2 {
+	margin-top: 15px;
+}
+
+p {
+	margin-top: 15px;
+}
+
+.foto {
+	float: left;
+	margin: 0px 15px 15px 0;
+	padding: 5px;
+	background: #f7f5ed;
+	border: 1px solid #cccabc;
+	border-radius: 2px;
+	width: calc(100% - 15px);
+	max-width: 400px;
+}
+
+footer {
+	width: 100%;
+	display: inline-block;
+}
+
+footer .menu {
+	float: none;
+	text-align: center;
+	margin-top: 10px;
+}
+
+footer .menu li a {
+	padding: 6px;
+	margin: 6px;
+}
+
+footer .menu li a:hover {
+	background-color: #1d4657;
+	text-decoration: underline;
+}
+
+.copyright {
+	font-size: 14px;
+	color: #c5def4;
+	text-align: center;
+	margin: 5px 0;
+}
+</style>
+
+<div
+	[ngStyle]="{'background-image': 'url(./assets/images/bg4.jpg)','background-size': '100% 100%' }"
+	style="position: fixed; width: 100%; height: 100%; left: 0"></div>
+<div class="container col-md-12" style="padding-top: 1%" *ngIf="true">
+	<div class="kutu">
+		<h1>Organik Nedir?</h1>
+		<!--<img src="./assets/images/logo2.jpg" class="foto" /-->
+		<p>Üretimde kimyasal girdi kullanmadan, üretimden tüketime kadar
+			her aşaması kontrollü ve sertifikalı tarımsal üretim biçimidir.
+			Ekolojik tarımın amacı; toprak ve su kaynakları ile havayı
+			kirletmeden, çevre, bitki, hayvan ve insan sağlığını korumaktır. Daha
+			geniş anlamda çevreyi korumayı amaçlayan, doğadan aldığını doğaya
+			geri veren, tarımın sürekliliğini sağlamayı hedefleyen ve hatta
+			çalışanlarının menfaatlerini korumaya başlayan toplu bir felsefenin
+			ürünü, bir yaşam biçimi. Organik ürünler vücudunuzun doğal dengesini
+			bozmaz, canlılık verir, tamamen doğadaki organik bitkilerden elde
+			edilir. Saf ve doğal olmayan hiçbir madde içermez.</p>
+		<p>Organik Ürünlere Güvenebilir Miyim? Bir ürünün Organik
+			Sertifika sahibi olabilmesi için: Avrupa Birliği standart ve
+			kurallarına göre T.C.Tarım Bakanlığı’nın yetkilendirdiği (çoğu
+			uluslararası yetkili) sertifika kuruluşları tarafından, • Tarla’nın
+			denetlenerek sertifikalanması • Çiftçi’nin eğitilip, denetlenerek
+			sertifikalanması • Tohum’un denetlenerek sertifikalanması • Doğal
+			Gübre’nin denetlenerek sertifikalanması • Doğal Böcek İlacı’nın
+			denetlenerek sertifikalanması • Yetişen Ürün’ün denetlenerek
+			sertifikalanması • Ürünü İşleyen’in denetlenerek sertifikalanması •
+			Ürünü Paketleyip Pazarlayan’ın denetlenerek sertifikalanması gerekir.
+			Organik ürünlerin fiyat farkının sebebi: • Yukarıda sayılan tüm
+			denetim ve sertifikalama işlemleri için her bir üretim döneminde ayrı
+			ayrı sertifika ücreti ödenir • Doğal Tohum kullanıldığından verim
+			düşüktür, • Suni Gübre kullanılmadığından verim düşüktür, • Organik
+			Gübre ve İlaçlar kimyasallara oranla çok daha pahalıdır • Organik
+			ilaçlar kimyasallar kadar etkili olmadığından fire verilir •
+			Eğer öncesinde tarlada kimyasal gübre ve ilaç kullanılmışsa 5 yıla
+			varan süreyle tarla bekletilir • Organik ürün tüketimi düşük
+			olduğundan, organik üretim yapan işletmeler küçüktür, birim
+			maliyetler yüksektir..</p>
+		
+	</div>
+</div>

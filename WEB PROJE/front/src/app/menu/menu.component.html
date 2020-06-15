@@ -1,0 +1,33 @@
+<header>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<div>
+			<a style="color: #fff" class="navbar-brand">Organik</a>
+		</div>
+
+		<ul class="navbar-nav">
+			<!-- *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" false ise gösteme  Yani kullanıcı bu alanı göremesin-->
+			<li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()"
+				routerLink="/welcome/organik" class="nav-link">Ana Sayfa</a></li>
+			<li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()"
+				routerLink="/todos" class="nav-link">Ürünler</a></li>
+				<li><a *ngIf="hardcodedAuthenticationService.isAdmin()"
+				routerLink="/listUser" class="nav-link">Müşteriler</a>
+			</li>
+			<li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn() && hardcodedAuthenticationService.isAdmin()"
+				routerLink="/listBucket" class="nav-link">Siparişler</a></li>
+			<li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()"
+				routerLink="/info" class="nav-link">Hakkımızda</a></li>
+		</ul>
+
+		<ul class="navbar-nav navbar-collapse justify-content-end">
+			<!-- *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" false ise göster  Yani kullanıcı yoksa gösterme login olabilsin-->
+			<li><a *ngIf="!hardcodedAuthenticationService.isUserLoggedIn()"
+				routerLink="/login" class="nav-link">Giriş</a></li>
+			
+
+
+				<li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()"
+				routerLink="/logout" class="nav-link">Çıkış</a></li>
+		</ul>
+	</nav>
+</header>

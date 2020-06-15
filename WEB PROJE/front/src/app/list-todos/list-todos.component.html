@@ -1,0 +1,125 @@
+<style>
+	.zoom {
+		transition: transform .5s;
+		border-radius: 8px;
+		margin: 0 auto;
+	}
+
+	.zoom:hover {
+		transform: scale(2.2);
+		border: 2px solid #fff;
+		border-radius: 8px;
+		box-shadow: 1px 1px 5px #ccc;
+		-moz-box-shadow: 1px 1px 5px #ccc;
+		-webkit-box-shadow: 1px 1px 5px #ccc;
+		border-radius: 8px;
+		box-shadow: 1px 1px 5px #ccc;
+		-moz-box-shadow:
+			1px 1px 5px #ccc;
+		-webkit-box-shadow: 1px 1px 5px #ccc;
+		-khtml-box-shadow: 1px 1px 5px #ccc;
+	}
+
+	.zoom:click {
+		transform: scale(5.2);
+		border: 2px solid #fff;
+		border-radius: 8px;
+		box-shadow: 1px 1px 5px #ccc;
+		-moz-box-shadow: 1px 1px 5px #ccc;
+		-webkit-box-shadow: 1px 1px 5px #ccc;
+		border-radius: 8px;
+		box-shadow: 1px 1px 5px #ccc;
+		-moz-box-shadow:
+			1px 1px 5px #ccc;
+		-webkit-box-shadow: 1px 1px 5px #ccc;
+		-khtml-box-shadow: 1px 1px 5px #ccc;
+	}
+</style>
+
+
+<div [ngStyle]="{'background-image': 'url(./assets/images/bg7.jpg)','background-size': '100% 100%' }"
+	style="position: fixed; width: 100%; height: 100%; left: 0"></div>
+
+<div class="container col-md-12" style="padding-top: 5%" *ngIf="hardcodedAuthenticationService.isAdmin()==false">
+	<!-- message değişkeni doluysa görünecek değilse görünmeyecek -->
+	<input type="text" id="search" placeholder="Ara..."	[(ngModel)]=search (input)="onSearchChange($event.target.value)"
+	class="form-control" name="search"
+	required="required" minlength="5">
+	<table class="table" style="border: none !important;">
+		<tbody>
+			<!-- ts tarafında ki todos listesini burada yazdırıyoruz -->
+			<tr *ngFor="let todo of todos">
+				<td width="5%"><img class="zoom" *ngIf="todo.image" src="{{todo.image}}" width="120" height="70" />
+				</td>
+				<td width="5%">
+					<h1 style="font-size:15px;color: #343a40;"><b>{{todo.name}}</b></h1>
+				</td>
+				<td width="25%" style="font-size: 15px;color: #343a40;" >{{todo.description}}</td>
+				<td width="5%" ><b>{{todo.price}}TL</b></td>
+				<td  width="1%"><button class="btn btn-success" (click)="addToSales(todo.id)">Sipariş Ver</button></td>
+
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="6">
+					<nav aria-label="Page navigation example" style="float: right;">
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link" (click)="goPrevious(index)">Geri</a></li>
+							<li *ngFor="let x of products | slice:0:size; let i =index" class="page-item"><a
+									class="page-link" (click)="pageChange(i+1)">{{i+1}}</a></li>
+							<li class="page-item"><a class="page-link" (click)="goNext(index)">İleri</a></li>
+						</ul>
+					</nav>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+
+<div class="container col-md-12" style="padding-top: 1%" *ngIf="hardcodedAuthenticationService.isAdmin()">
+	<!-- message değişkeni doluysa görünecek değilse görünmeyecek -->
+	<h1>Ürünler</h1>
+	<div class="col-md-12" style="padding-bottom: 50px;">
+		<button style="float: right;" (click)="addTodo()" class="btn btn-success">Ürün Ekle</button>
+	</div>
+	<table class="table">
+
+		<thead>
+			<tr>
+				<th>Ürün Adı</th>
+				<th>Açıklama</th>
+				<th>Fiyat</th>
+				<th>Resim</th>
+				<th>Güncelle</th>
+				<th>Sil</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- ts tarafında ki todos listesini burada yazdırdık-->
+			<tr *ngFor="let todo of todos">
+
+				<td style="font-size: 17px;color: #343a40;" ><b>{{todo.name}}</b></td>
+				<td style="font-size: 17px;color: #343a40;">{{todo.description}}</td>
+				<td>{{todo.price}} TL</td>
+				<td><img *ngIf="todo.image" class="zoom" src="{{todo.image}}" width="85" height="55" /></td>
+				<td><button class="btn btn-warning" (click)="updateTodo(todo.id)">Güncelle</button></td>
+				<td><button class="btn btn-danger" (click)="deleteTodo(todo.id)">Sil</button></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="6">
+					<nav aria-label="Page navigation example" style="float: right;">
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link" (click)="goPrevious(index)">Geri</a></li>
+							<li *ngFor="let x of products | slice:0:size; let i =index" class="page-item"><a
+									class="page-link" (click)="pageChange(i+1)">{{i+1}}</a></li>
+							<li class="page-item"><a class="page-link" (click)="goNext(index)">İleri</a></li>
+						</ul>
+					</nav>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
